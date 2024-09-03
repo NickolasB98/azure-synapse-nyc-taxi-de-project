@@ -1,0 +1,26 @@
+[
+{
+    "folder_path": "silver/calendar",
+    "usp_name": "silver.usp_silver_calendar"
+},
+{
+    "folder_path": "silver/taxi_zone",
+    "usp_name": "silver.usp_silver_taxi_zone"
+},
+{
+    "folder_path": "silver/trip_type",
+    "usp_name": "silver.usp_silver_trip_type"
+},
+{
+    "folder_path": "silver/vendor",
+    "usp_name": "silver.usp_silver_vendor"
+},
+{
+    "folder_path": "silver/rate_code",
+    "usp_name": "silver.usp_silver_rate_code"
+},
+{
+    "folder_path": "silver/payment_type",
+    "usp_name": "silver.usp_silver_payment_type"
+}
+]

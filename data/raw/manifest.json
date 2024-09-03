@@ -1,0 +1,13 @@
+{
+    "fileLocations": [
+        {
+            "URIPrefixes": [
+                "s3://my-nyc-taxi-azure-bucket/trip_data_green_agg/year=2020/month=",
+                "s3://my-nyc-taxi-azure-bucket/trip_data_green_agg/year=2021/month="
+            ]
+        }
+    ],
+    "globalUploadSettings": {
+        "format": "PARQUET"
+    }
+}
