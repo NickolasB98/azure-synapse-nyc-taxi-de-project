@@ -85,11 +85,13 @@ Used to connect all of the previous pipelines, form dependencies between them, a
 
 <img width="631" alt="image" src="https://github.com/user-attachments/assets/ffc27d0a-aa82-4cf7-af54-7a7ee9310089">
 
-### Important Limitation of Synapse Serverless SQL:
+#### Important Limitation of Synapse Serverless SQL:
 
 The use of Serverless SQL for the Transformation phase does not allow the maintenance of partitions, as initially imported from the Bronze layer. To prevent this issue, I used a dynamic dataset and Stored Procedures to recreate the partition parquet files. This means I used one stored procedure for every partition existing in every pipeline execution. This problem can not scale very efficiently if the data grows bigger each time. The solution is an Architecture using Spark Pool for the transformations.
 
-2. **Apache Spark Pool:** The Apache Spark Pool in Azure Synapse Analytics is a powerful computing resource designed for large-scale data processing and analytics. It provides a highly scalable and distributed processing engine, allowing users to execute Spark jobs on massive datasets. The Spark Pool leverages the Apache Spark framework, enabling users to perform complex data transformations, machine learning tasks, and advanced analytics. With seamless integration into Azure Synapse Analytics, it offers a unified environment for data ingestion, exploration, and visualization, empowering organizations to gain valuable insights from their data quickly and efficiently.
+**The Solution**
+
+**2. Apache Spark Pool:** The Apache Spark Pool in Azure Synapse Analytics is a powerful computing resource designed for large-scale data processing and analytics. It provides a highly scalable and distributed processing engine, allowing users to execute Spark jobs on massive datasets. The Spark Pool leverages the Apache Spark framework, enabling users to perform complex data transformations, machine learning tasks, and advanced analytics. With seamless integration into Azure Synapse Analytics, it offers a unified environment for data ingestion, exploration, and visualization, empowering organizations to gain valuable insights from their data quickly and efficiently.
 
 #### Solution Architecture
 <img width="1350" alt="image" src="https://github.com/user-attachments/assets/2bae5b95-3883-4937-986e-9cae29386720">
