@@ -105,11 +105,26 @@ This project demonstrates the strategic use of different cloud environments base
 
 **ETL Pipeline and Scheduling:** An ETL (Extract, Transform, Load) pipeline was established to automate the data flow from Bronze to Gold Schemas. This pipeline was scheduled to run regularly, ensuring the data was continuously updated and refreshed.
 
-Additional Steps:
+### Additional Steps:
 
 Data Transformation with Apache Spark: The data was processed using Apache Spark Notebooks to perform complex transformations or analyses that were not feasible or efficient using T-SQL.
 
 Data Visualization and Reporting (QuickSight): The final dataset was ingested into an AWS S3 Bucket, queried into AWS Athena, and finally ingested into AWS QuickSight, a powerful business intelligence service. QuickSight's interactive dashboards and visualizations were used to explore the data, identify key trends and patterns, and generate insightful reports to support the project's objectives.
 
+
+<img width="853" alt="image" src="https://github.com/user-attachments/assets/3dd4d023-2932-44ff-a3dc-8915f14618b4">
+
+
 Real-Time Data Integration (Azure Cosmos DB): For real-time data requirements, data was queried from Azure Cosmos DB and saved as JSON files. The files were automatically converted into columnar storage format and stored in an OLAP Warehouse automatically created by Synapse Link. This enabled integration with real-time data sources and provided a more up-to-date view of the data without the need of ETL. This chapter is not included in the main project but is an additional step to demonstrate how OLTP data automatically inserted from taxi IOT machines can become almost instantly available for historical big data analysis in the OLAP warehouse.
+
+
+
+<img width="1438" alt="Screenshot at Sep 02 02-36-25" src="https://github.com/user-attachments/assets/59663c31-f001-448b-a000-1f053cfe6233">
+
+<img width="1438" alt="queryHeartbeatFromServerlessPool" src="https://github.com/user-attachments/assets/d8bba9f9-d64d-4cbc-912a-ce6a9765f0c1">
+
+<img width="297" alt="LinkedDataSynapse" src="https://github.com/user-attachments/assets/4313662b-b3df-4697-88fd-d3c2759223cf">
+
+<img width="1433" alt="insertItemsMongoDB" src="https://github.com/user-attachments/assets/2c6565fa-831d-4607-b313-255f6d6e0077">
+
 
