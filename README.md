@@ -69,11 +69,13 @@ The data was transformed to different file types, and I worked with them in the 
 
 4.  **Data Visualization and Analysis:**
 
-Data visualization in this projects showcases how a project can successfully take advantage of utilizing different Cloud environments, according to which tool is needed at the phase of the data engineering cycle. For this project, the gold data from Synapse was imported in partitions into an S3 Bucket in AWS Cloud, to be queried and visualized for the final reports.
+This project demonstrates the strategic use of different cloud environments based on specific needs within the data engineering cycle. The final, processed data (gold data) from Synapse was imported into an S3 bucket within the AWS Cloud in a partitioned format for querying and visualization in the final reports.
 
-AWS Glue was used to Crawl the partitioned data and automatically identify the schema, considering the partitioned columns Month and Year. AWS Athena, a serverless query engine, was then utilized to create an external table over these files. This enabled seamless interaction with the data using standard SQL queries.
+AWS Glue: Used to crawl the partitioned data and automatically identify the schema, considering the partitioned columns (Month and Year).
 
-Finally, the final table was ingested into AWS QuickSight, a powerful business intelligence service. By leveraging QuickSight's interactive dashboards and visualizations, key trends and patterns within the NYC Taxi Green trip data were identified, directly supporting the project's campaign requirements.
+AWS Athena: This serverless query engine was utilized to create an external table over the data files, enabling seamless interaction with the data using standard SQL queries.
+
+AWS QuickSight: The final table was ingested into this powerful business intelligence service. By leveraging QuickSight's interactive dashboards and visualizations, key trends and patterns within the NYC Taxi Green trip data were identified, directly supporting the project's campaign requirements.
 
 #### AWS Quicksight Report
 
