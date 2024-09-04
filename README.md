@@ -114,11 +114,28 @@ By incorporating the Spark notebook execution pipeline within the master pipelin
 
 This project demonstrates the strategic use of different cloud environments based on specific needs within the data engineering cycle. The final, processed data (gold data) from Synapse was imported into an S3 bucket within the AWS Cloud in a partitioned parquet format for querying and visualization in the final reports.
 
+**S3 Bucket containing the Gold Partinioned Data**:
+
+<img width="1296" alt="s3Bucket" src="https://github.com/user-attachments/assets/75f0c5ec-cc4d-4854-bd4e-898615487c51">
+<img width="1276" alt="s3Partitions" src="https://github.com/user-attachments/assets/86cd80c4-df5c-4ec7-b614-ddcb69694a24">
+
+
 **AWS Glue:** Used to crawl the partitioned data and automatically identify the schema, considering the partitioned columns (Month and Year).
+
+<img width="1094" alt="Crawler" src="https://github.com/user-attachments/assets/408fc306-e3c4-4889-8835-1f32c364ea52">
+
+<img width="1059" alt="tableAfterCrawler" src="https://github.com/user-attachments/assets/5c556e64-74a0-4a34-954a-2b516a7d6a5c">
+
+
 
 **AWS Athena:** This serverless query engine was utilized to create an external table over the data files, enabling seamless interaction with the data using standard SQL queries.
 
+<img width="1264" alt="tableInAthena" src="https://github.com/user-attachments/assets/4a74e889-c6b9-479a-bc55-98e5bec2c362">
+
+
 **AWS QuickSight:** The final table was ingested into this powerful business intelligence service. By leveraging QuickSight's interactive dashboards and visualizations, key trends and patterns within the NYC Taxi Green trip data were identified, directly supporting the project's campaign requirements.
+
+<img width="709" alt="QuicksightDashboard" src="https://github.com/user-attachments/assets/7f51712a-ed88-4c69-bca4-5fa090ee235f">
 
 ### Business Requirements
 
