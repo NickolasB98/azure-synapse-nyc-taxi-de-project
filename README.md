@@ -54,26 +54,20 @@ The data was transformed to different file types, and I worked with them in the 
 1. **Serverless SQL Pool:** The Serverless SQL Pool in Azure Synapse Analytics is a powerful feature that enables you to query large volumes of data without the need for provisioning or managing dedicated resources. It offers an on-demand, serverless approach to executing SQL queries against data stored in various formats within your Azure Data Lake Storage Gen2.
  
 #### Solution Architecture 
-![Serverless SQL Pool](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/SQL%20Serverless%20Solution%20Arch.png)
+<img width="1375" alt="image" src="https://github.com/user-attachments/assets/e099702e-fe84-40e2-84f9-5dd61a546692">
+
 
 2. **Apache Spark Pool:** The Apache Spark Pool in Azure Synapse Analytics is a powerful computing resource designed for large-scale data processing and analytics. It provides a highly scalable and distributed processing engine, allowing users to execute Spark jobs on massive datasets. The Spark Pool leverages the Apache Spark framework, enabling users to perform complex data transformations, machine learning tasks, and advanced analytics. With seamless integration into Azure Synapse Analytics, it offers a unified environment for data ingestion, exploration, and visualization, empowering organizations to gain valuable insights from their data quickly and efficiently.
 
 #### Solution Architecture
 ![Spark Pool](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/Spark%20Pool%20Solution%20Arch.png)
 
-3. **Dedicated SQL Pool:** Azure Synapse Analytics's Dedicated SQL Pool is a powerful and scalable service designed for running large-scale data warehousing and analytics workloads. It provides a dedicated set of compute and storage resources, allowing organizations to efficiently process and analyze vast amounts of data. With its massively parallel processing architecture, it can handle complex queries and deliver high-performance results. The Dedicated SQL Pool offers advanced data integration capabilities, including data loading, transformation, and querying using familiar SQL syntax. It empowers businesses to gain valuable insights from their data while maintaining robust security and data governance measures.
-
-#### Solution Architecture
-![Dedicated SQL Pool](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/SQL%20Dedicated%20Pool%20Solution%20Arch.png)
-
-4. **Synapse Link:** Synapse Link is a feature within Azure Synapse Analytics that enables seamless and real-time integration between the cloud-based analytical capabilities of Azure Synapse and operational data stored in Azure Cosmos DB. It eliminates the need for data movement or duplication, allowing organizations to directly query and analyze live data from Azure Cosmos DB using familiar SQL-based tools and techniques. Synapse Link provides a unified and efficient way to bridge the gap between analytical and operational systems, enabling organizations to gain valuable insights from their real-time data without compromising on performance or scalability.
+3. **Synapse Link:** Synapse Link is a feature within Azure Synapse Analytics that enables seamless and real-time integration between the cloud-based analytical capabilities of Azure Synapse and operational data stored in Azure Cosmos DB. It eliminates the need for data movement or duplication, allowing organizations to directly query and analyze live data from Azure Cosmos DB using familiar SQL-based tools and techniques. Synapse Link provides a unified and efficient way to bridge the gap between analytical and operational systems, enabling organizations to gain valuable insights from their real-time data without compromising on performance or scalability.
 
 #### Solution Architecture
 ![Synapse Link](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/Synapse%20Link%20Solution%20Arch.png)
 
-5. **Power BI Integration:**
-
-5.  **Data Visualization and Analysis:**
+4.  **Data Visualization and Analysis:**
 
 Data visualization in this projects showcases how a project can successfully take advantage of utilizing different Cloud environments, according to which tool is needed at the phase of the data engineering cycle. For this project, the gold data from Synapse was imported in partitions into an S3 Bucket in AWS Cloud, to be queried and visualized for the final reports.
 
