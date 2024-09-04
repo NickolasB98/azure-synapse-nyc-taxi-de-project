@@ -83,9 +83,10 @@ Finally, the final table was ingested into AWS QuickSight, a powerful business i
 
 #### AWS Quicksight Report
 
-[CardCampaign.pdf](https://github.com/user-attachments/files/16870762/CardCampaign.pdf)
+<img width="1159" alt="image" src="https://github.com/user-attachments/assets/371deec9-7e29-49f0-9d69-420e351b0a2c">
 
-[DemandAnalysis.pdf](https://github.com/user-attachments/files/16870763/DemandAnalysis.pdf)
+<img width="1073" alt="image" src="https://github.com/user-attachments/assets/fad9779c-a9ba-4256-912e-84224a770af1">
+
 
 ### Project Execution Flow 
 **Main Steps**
