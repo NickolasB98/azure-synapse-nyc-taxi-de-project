@@ -67,17 +67,24 @@ The data was transformed to different file types, and I worked with them in the 
 #### Solution Architecture
 ![Synapse Link](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/Synapse%20Link%20Solution%20Arch.png)
 
-4.  **Data Visualization and Analysis:**
+4.  ### Data Visualization and Analysis:
 
 This project demonstrates the strategic use of different cloud environments based on specific needs within the data engineering cycle. The final, processed data (gold data) from Synapse was imported into an S3 bucket within the AWS Cloud in a partitioned format for querying and visualization in the final reports.
 
-AWS Glue: Used to crawl the partitioned data and automatically identify the schema, considering the partitioned columns (Month and Year).
+**AWS Glue:** Used to crawl the partitioned data and automatically identify the schema, considering the partitioned columns (Month and Year).
 
-AWS Athena: This serverless query engine was utilized to create an external table over the data files, enabling seamless interaction with the data using standard SQL queries.
+**AWS Athena:** This serverless query engine was utilized to create an external table over the data files, enabling seamless interaction with the data using standard SQL queries.
 
-AWS QuickSight: The final table was ingested into this powerful business intelligence service. By leveraging QuickSight's interactive dashboards and visualizations, key trends and patterns within the NYC Taxi Green trip data were identified, directly supporting the project's campaign requirements.
+**AWS QuickSight:** The final table was ingested into this powerful business intelligence service. By leveraging QuickSight's interactive dashboards and visualizations, key trends and patterns within the NYC Taxi Green trip data were identified, directly supporting the project's campaign requirements.
 
-#### AWS Quicksight Report
+### Business Requirements
+
+<img width="850" alt="image" src="https://github.com/user-attachments/assets/a3d13e47-8250-4bff-a81d-1d6f8d8faeb0">
+
+<img width="853" alt="image" src="https://github.com/user-attachments/assets/93462716-2a0a-4365-a160-0da6bd92d2a9">
+
+
+### AWS Quicksight Report Based on Requirements
 
 <img width="1159" alt="image" src="https://github.com/user-attachments/assets/371deec9-7e29-49f0-9d69-420e351b0a2c">
 
@@ -85,15 +92,24 @@ AWS QuickSight: The final table was ingested into this powerful business intelli
 
 
 ### Project Execution Flow 
-**Main Steps**
-1. Discovery (Exploratory Data Analsys with T-SQL) 
-2. Create External Table (Bronze Schema) to ingest (Extract) data and create External Table/View. 
-3. Create External Table (Silver Schema) to transform data in the appropriate format. 
-4. Create External Table (Gold Schema) to join table for use for AWS Quicksight and for keeping the data in a Data Warehouse in Synapse.
-5. Create ETL Pipeline and schedule trigger runs (from Bronze to Gold).
 
-**Additional Steps**
-1. Transform data with Apache Spark Pool (Notebooks).
-2. Query data from Azure Cosmos DB (for real-time data and saving as JSON files) 
-3. Provision Dedicated SQL Pool to keep final data (Gold). 
-4. Create Power BI report, connecting it to Azure Synapse Analytics, and publish to AWS Quicksight.
+#### Core Stages:
+
+**Discovery and Exploration:** A thorough analysis of the dataset was conducted using T-SQL to gain a comprehensive understanding of the data's structure, quality, and potential insights.
+
+**Data Ingestion (Bronze Schema):** The raw data was extracted from its source and ingested into a Bronze Schema external table within Azure Synapse Analytics. This stage serves as the initial landing ground for the data.
+
+**Data Transformation (Silver Schema):** The data in the Bronze Schema was transformed to a more refined and usable format in the Silver Schema. This step involved cleaning, standardizing, and enriching the data to ensure its quality and consistency.
+
+**Data Integration and Finalization (Gold Schema):** The transformed data from the Silver Schema was integrated into the Gold Schema, where the final, refined dataset was created. This step involved joining tables, aggregating data, and applying any necessary calculations or transformations to prepare the data for analysis and reporting.
+
+**ETL Pipeline and Scheduling:** An ETL (Extract, Transform, Load) pipeline was established to automate the data flow from Bronze to Gold Schemas. This pipeline was scheduled to run regularly, ensuring the data was continuously updated and refreshed.
+
+Additional Steps:
+
+Data Transformation with Apache Spark: The data was processed using Apache Spark Notebooks to perform complex transformations or analyses that were not feasible or efficient using T-SQL.
+
+Data Visualization and Reporting (QuickSight): The final dataset was ingested into an AWS S3 Bucket, queried into AWS Athena, and finally ingested into AWS QuickSight, a powerful business intelligence service. QuickSight's interactive dashboards and visualizations were used to explore the data, identify key trends and patterns, and generate insightful reports to support the project's objectives.
+
+Real-Time Data Integration (Azure Cosmos DB): For real-time data requirements, data was queried from Azure Cosmos DB and saved as JSON files. The files were automatically converted into columnar storage format and stored in an OLAP Warehouse automatically created by Synapse Link. This enabled integration with real-time data sources and provided a more up-to-date view of the data without the need of ETL. This chapter is not included in the main project but is an additional step to demonstrate how OLTP data automatically inserted from taxi IOT machines can become almost instantly available for historical big data analysis in the OLAP warehouse.
+
