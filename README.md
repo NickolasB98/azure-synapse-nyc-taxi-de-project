@@ -194,7 +194,7 @@ Synapse Link is enabled in CosmosDB configuration, which will allow the transfor
 The data is now Linked inside Synapse, ready to be queried from our Serverless SQL Pool or Spark Pool.
 <img width="297" alt="LinkedDataSynapse" src="https://github.com/user-attachments/assets/4313662b-b3df-4697-88fd-d3c2759223cf">
 
-The data are seamlessly queried directly from CosmosDB, efficiently getting advantage of their columnar parquet format for faster queries and no need to further ETL steps.
+The data is seamlessly queried directly from CosmosDB, efficiently getting advantage of their columnar parquet format for faster queries and no need to further ETL steps.
 
 <img width="1438" alt="queryHeartbeatFromServerlessPool" src="https://github.com/user-attachments/assets/d8bba9f9-d64d-4cbc-912a-ce6a9765f0c1">
 
