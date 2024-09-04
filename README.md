@@ -64,11 +64,13 @@ Creates the silver tables for all the non-partitioned data. Uses the For Each fu
 
 <img width="1439" alt="image" src="https://github.com/user-attachments/assets/8b3a0ca7-dcfc-40da-a26f-cc1971792aec">
 
+
 **pl_create_silver_trip_data_green:**
 
 Creates the silver tables for the partitioned data. Uses the Script that gets the partitions from the bronze view created for the trip data file, to use inside the ForEach function. The function follows the same logic as before, deleting the previous partitions and recreating them according to the existing / updated partitions as received from the bronze. It finally creates the silver view, which allows for partition pruning.
 
 <img width="1437" alt="image" src="https://github.com/user-attachments/assets/c9972f74-8511-43f3-89c3-ac7107c0b3de">
+
 
 **pl_create_gold_trip_data_green:**
 
