@@ -71,23 +71,32 @@ The data was transformed to different file types, and I worked with them in the 
 #### Solution Architecture
 ![Synapse Link](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/Synapse%20Link%20Solution%20Arch.png)
 
-5. **Power BI Integration:** Power BI for Azure Synapse Analytics is a powerful analytics tool that combines the capabilities of Power BI and Azure Synapse Analytics. It enables organizations to extract valuable insights from their data by seamlessly integrating data ingestion, data preparation, data warehousing, and visualization. With Power BI for Azure Synapse Analytics, users can create visually appealing and interactive dashboards, reports, and data visualizations, allowing them to analyze and explore data from various sources within a unified and efficient environment. This integration empowers businesses to make data-driven decisions and gain a deeper understanding of their data at scale.
+5. **Power BI Integration:**
 
-#### Power BI Report
-![Power BI](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/NYC%20Taxi%20Campaign%20Analysis%20(Payment%20Type).jpg)
-![Power BI](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/NYC%20Taxi%20Campaign%20Analysis%20(Demand).jpg)
+5.  **Data Visualization and Analysis:**
 
+Data visualization in this projects showcases how a project can successfully take advantage of utilizing different Cloud environments, according to which tool is needed at the phase of the data engineering cycle. For this project, the gold data from Synapse was imported in partitions into an S3 Bucket in AWS Cloud, to be queried and visualized for the final reports.
+
+AWS Glue was used to Crawl the partitioned data and automatically identify the schema, considering the partitioned columns Month and Year. AWS Athena, a serverless query engine, was then utilized to create an external table over these files. This enabled seamless interaction with the data using standard SQL queries.
+
+Finally, the final table was ingested into AWS QuickSight, a powerful business intelligence service. By leveraging QuickSight's interactive dashboards and visualizations, key trends and patterns within the NYC Taxi Green trip data were identified, directly supporting the project's campaign requirements.
+
+#### AWS Quicksight Report
+
+[CardCampaign.pdf](https://github.com/user-attachments/files/16870762/CardCampaign.pdf)
+
+[DemandAnalysis.pdf](https://github.com/user-attachments/files/16870763/DemandAnalysis.pdf)
 
 ### Project Execution Flow 
 **Main Steps**
 1. Discovery (Exploratory Data Analsys with T-SQL) 
 2. Create External Table (Bronze Schema) to ingest (Extract) data and create External Table/View. 
 3. Create External Table (Silver Schema) to transform data in the appropriate format. 
-4. Create External Table (Gold Schema) to join table for using for Power BI and for keeping the data in a Data Warehouse (Dedicated SQL Pool).
+4. Create External Table (Gold Schema) to join table for use for AWS Quicksight and for keeping the data in a Data Warehouse in Synapse.
 5. Create ETL Pipeline and schedule trigger runs (from Bronze to Gold).
 
 **Additional Steps**
 1. Transform data with Apache Spark Pool (Notebooks).
 2. Query data from Azure Cosmos DB (for real-time data and saving as JSON files) 
 3. Provision Dedicated SQL Pool to keep final data (Gold). 
-4. Create Power BI report, connecting it to Azure Synapse Analytics, and publish to Power BI Service.
+4. Create Power BI report, connecting it to Azure Synapse Analytics, and publish to AWS Quicksight.
