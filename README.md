@@ -67,9 +67,9 @@ The data was transformed to different file types, and I worked with them in the 
 #### Solution Architecture
 ![Synapse Link](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/Synapse%20Link%20Solution%20Arch.png)
 
-4.  ### Data Visualization and Analysis:
+### 4. Data Visualization and Analysis:
 
-This project demonstrates the strategic use of different cloud environments based on specific needs within the data engineering cycle. The final, processed data (gold data) from Synapse was imported into an S3 bucket within the AWS Cloud in a partitioned format for querying and visualization in the final reports.
+This project demonstrates the strategic use of different cloud environments based on specific needs within the data engineering cycle. The final, processed data (gold data) from Synapse was imported into an S3 bucket within the AWS Cloud in a partitioned parquet format for querying and visualization in the final reports.
 
 **AWS Glue:** Used to crawl the partitioned data and automatically identify the schema, considering the partitioned columns (Month and Year).
 
