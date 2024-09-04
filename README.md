@@ -185,7 +185,7 @@ Data Visualization and Reporting (QuickSight): The final dataset was ingested in
 
 Real-Time Data Integration (Azure Cosmos DB): For real-time data requirements, data was queried from Azure Cosmos DB and saved as JSON files. The files were automatically converted into columnar storage format and stored in an OLAP Warehouse automatically created by Synapse Link. This enabled integration with real-time data sources and provided a more up-to-date view of the data without the need of ETL. This chapter is not included in the main project but is an additional step to demonstrate how OLTP data automatically inserted from taxi IOT machines can become almost instantly available for historical big data analysis in the OLAP warehouse.
 
-###### Let's show the steps for this seamless integration of CosmosDB, Serverless SQL Pool, and Spark Pool in Azure Synapse, with the use of Synapse Link.
+#### Let's show the steps for this seamless integration of CosmosDB, Serverless SQL Pool, and Spark Pool in Azure Synapse, with the use of Synapse Link.
 
 Data from IOT Taxi Devices are imported into the Heartbeat container in Cosmos DB.
 Synapse Link is enabled in CosmosDB configuration, which will allow the transformation of OLTP row storage data to OLAP columnar without the need of ETL.
