@@ -56,23 +56,23 @@ The data was transformed to different file types, and I worked with them in the 
 #### Solution Architecture 
 <img width="1372" alt="image" src="https://github.com/user-attachments/assets/f03937ef-754a-4caf-8b41-fa59f3036c58">
 
-##### Pipelines created in Synapse:
+### Pipelines created in Synapse:
 
-**pl_create_silver_tables:**
+#### pl_create_silver_tables:**
 
 Creates the silver tables for all the non-partitioned data. Uses the For Each function to capture the metadata of the files and stored procedures, to delete the previous tables and recreate them according to the existing / updated metadata filenames and stored procedures. This way, the pipelines are **Idempotent**: Idempotency in data pipelines refers to the ability to execute the same operation multiple times without changing the result beyond the initial application.
 
 <img width="1439" alt="image" src="https://github.com/user-attachments/assets/8b3a0ca7-dcfc-40da-a26f-cc1971792aec">
 
 
-**pl_create_silver_trip_data_green:**
+#### pl_create_silver_trip_data_green:
 
 Creates the silver tables for the partitioned data. Uses the Script that gets the partitions from the bronze view created for the trip data file, to use inside the ForEach function. The function follows the same logic as before, deleting the previous partitions and recreating them according to the existing / updated partitions as received from the bronze. It finally creates the silver view, which allows for partition pruning.
 
 <img width="1437" alt="image" src="https://github.com/user-attachments/assets/c9972f74-8511-43f3-89c3-ac7107c0b3de">
 
 
-**pl_create_gold_trip_data_green:**
+#### pl_create_gold_trip_data_green:
 
 Creates the final gold view. Uses that Script that gets the partitions from the silver view created by the previous pipeline, to use inside the ForEach function. The functions acts accordingly, deleting the previous partitions and recreating them based on the updated / existing partitions as taken from the updated silver view. It finally created the golden view, having joined the dimension tables to the fact table and the data is aggregated to represent important business insights. The gold view supports partition pruning, to benefit from querying and filtering, utilizing the partitions of Year and Month.
 
