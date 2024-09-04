@@ -56,11 +56,61 @@ The data was transformed to different file types, and I worked with them in the 
 #### Solution Architecture 
 <img width="1372" alt="image" src="https://github.com/user-attachments/assets/f03937ef-754a-4caf-8b41-fa59f3036c58">
 
+##### Pipelines created in Synapse:
+
+**pl_create_silver_tables:**
+
+Creates the silver tables for all the non-partitioned data. Uses the For Each function to capture the metadata of the files and stored procedures, to delete the previous tables and recreate them according to the existing / updated metadata filenames and stored procedures. This way, the pipelines are **Idempotent**: Idempotency in data pipelines refers to the ability to execute the same operation multiple times without changing the result beyond the initial application.
+
+<img width="1439" alt="image" src="https://github.com/user-attachments/assets/8b3a0ca7-dcfc-40da-a26f-cc1971792aec">
+
+**pl_create_silver_trip_data_green:**
+
+Creates the silver tables for the partitioned data. Uses the Script that gets the partitions from the bronze view created for the trip data file, to use inside the ForEach function. The function follows the same logic as before, deleting the previous partitions and recreating them according to the existing / updated partitions as received from the bronze. It finally creates the silver view, which allows for partition pruning.
+
+<img width="1437" alt="image" src="https://github.com/user-attachments/assets/c9972f74-8511-43f3-89c3-ac7107c0b3de">
+
+**pl_create_gold_trip_data_green:**
+
+Creates the final gold view. Uses that Script that gets the partitions from the silver view created by the previous pipeline, to use inside the ForEach function. The functions acts accordingly, deleting the previous partitions and recreating them based on the updated / existing partitions as taken from the updated silver view. It finally created the golden view, having joined the dimension tables to the fact table and the data is aggregated to represent important business insights. The gold view supports partition pruning, to benefit from querying and filtering, utilizing the partitions of Year and Month.
+
+<img width="1439" alt="image" src="https://github.com/user-attachments/assets/e04589f6-4557-43a5-b307-06a29bf65bd2">
+
+
+#### The Master Pipeline
+
+Used to connect all of the previous pipelines, form dependencies between them, and utilize a Schedule type Trigger to get executed automatically.
+
+<img width="1438" alt="image" src="https://github.com/user-attachments/assets/dfc2821d-2a36-4651-bde9-5d79416edd25">
+
+<img width="631" alt="image" src="https://github.com/user-attachments/assets/ffc27d0a-aa82-4cf7-af54-7a7ee9310089">
+
+### Important Limitation of Synapse Serverless SQL:
+
+The use of Serverless SQL for the Transformation phase does not allow the maintenance of partitions, as initially imported from the Bronze layer. To prevent this issue, I used a dynamic dataset and Stored Procedures to recreate the partition parquet files. This means I used one stored procedure for every partition existing in every pipeline execution. This problem can not scale very efficiently if the data grows bigger each time. The solution is an Architecture using Spark Pool for the transformations.
 
 2. **Apache Spark Pool:** The Apache Spark Pool in Azure Synapse Analytics is a powerful computing resource designed for large-scale data processing and analytics. It provides a highly scalable and distributed processing engine, allowing users to execute Spark jobs on massive datasets. The Spark Pool leverages the Apache Spark framework, enabling users to perform complex data transformations, machine learning tasks, and advanced analytics. With seamless integration into Azure Synapse Analytics, it offers a unified environment for data ingestion, exploration, and visualization, empowering organizations to gain valuable insights from their data quickly and efficiently.
 
 #### Solution Architecture
 <img width="1350" alt="image" src="https://github.com/user-attachments/assets/2bae5b95-3883-4937-986e-9cae29386720">
+
+**Spark Pool Configuration**
+
+To initialize a Spark Pool, specific configurations are required. As a minimum, it's recommended to deploy one master node and at least two worker nodes.
+
+<img width="1439" alt="image" src="https://github.com/user-attachments/assets/e09613e7-3ef4-4a9d-bd24-cfd4b77d0b70">
+
+**Spark Notebook Integration**
+
+Once configured, the Spark Pool is readily accessible by notebooks, allowing them to leverage its processing power. In this project, a Spark notebook transforms silver data into the final, gold-tier aggregated format. This approach efficiently utilizes existing partitions within the silver trip_data_green parquet files. This simple yet effective solution eliminates the need for intricate dynamic datasets in Synapse Data Factory or dynamic stored procedures that rely on variable partition names.
+
+By incorporating the Spark notebook execution pipeline within the master pipeline, this project achieves significantly faster, more scalable, and easier-to-maintain data transformations. This demonstrates the optimal utilization of Serverless SQL Pool and Spark Pool, where they can seamlessly collaborate within the Azure Synapse Analytics environment.
+
+<img width="1439" alt="image" src="https://github.com/user-attachments/assets/5ff7dc2c-5292-4fd4-9e5a-d0bdd9fd2a63">
+
+<img width="1439" alt="image" src="https://github.com/user-attachments/assets/f5b85bf2-12a3-4bff-bd7b-4bb6a0060e56">
+
+
 
 3. **Synapse Link:** Synapse Link is a feature within Azure Synapse Analytics that enables seamless and real-time integration between the cloud-based analytical capabilities of Azure Synapse and operational data stored in Azure Cosmos DB. It eliminates the need for data movement or duplication, allowing organizations to directly query and analyze live data from Azure Cosmos DB using familiar SQL-based tools and techniques. Synapse Link provides a unified and efficient way to bridge the gap between analytical and operational systems, enabling organizations to gain valuable insights from their real-time data without compromising on performance or scalability.
 
