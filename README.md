@@ -110,14 +110,7 @@ By incorporating the Spark notebook execution pipeline within the master pipelin
 
 <img width="1439" alt="image" src="https://github.com/user-attachments/assets/f5b85bf2-12a3-4bff-bd7b-4bb6a0060e56">
 
-
-
-3. **Synapse Link:** Synapse Link is a feature within Azure Synapse Analytics that enables seamless and real-time integration between the cloud-based analytical capabilities of Azure Synapse and operational data stored in Azure Cosmos DB. It eliminates the need for data movement or duplication, allowing organizations to directly query and analyze live data from Azure Cosmos DB using familiar SQL-based tools and techniques. Synapse Link provides a unified and efficient way to bridge the gap between analytical and operational systems, enabling organizations to gain valuable insights from their real-time data without compromising on performance or scalability.
-
-#### Solution Architecture
-![Synapse Link](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/Synapse%20Link%20Solution%20Arch.png)
-
-### 4. Data Visualization and Analysis:
+### 3. Data Visualization and Analysis:
 
 This project demonstrates the strategic use of different cloud environments based on specific needs within the data engineering cycle. The final, processed data (gold data) from Synapse was imported into an S3 bucket within the AWS Cloud in a partitioned parquet format for querying and visualization in the final reports.
 
@@ -164,17 +157,37 @@ Data Visualization and Reporting (QuickSight): The final dataset was ingested in
 
 <img width="853" alt="image" src="https://github.com/user-attachments/assets/3dd4d023-2932-44ff-a3dc-8915f14618b4">
 
+**Synapse Link:** Synapse Link is a feature within Azure Synapse Analytics that enables seamless and real-time integration between the cloud-based analytical capabilities of Azure Synapse and operational data stored in Azure Cosmos DB. It eliminates the need for data movement or duplication, allowing organizations to directly query and analyze live data from Azure Cosmos DB using familiar SQL-based tools and techniques. Synapse Link provides a unified and efficient way to bridge the gap between analytical and operational systems, enabling organizations to gain valuable insights from their real-time data without compromising on performance or scalability.
+
+#### Solution Architecture
+![Synapse Link](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/Synapse%20Link%20Solution%20Arch.png)
 
 Real-Time Data Integration (Azure Cosmos DB): For real-time data requirements, data was queried from Azure Cosmos DB and saved as JSON files. The files were automatically converted into columnar storage format and stored in an OLAP Warehouse automatically created by Synapse Link. This enabled integration with real-time data sources and provided a more up-to-date view of the data without the need of ETL. This chapter is not included in the main project but is an additional step to demonstrate how OLTP data automatically inserted from taxi IOT machines can become almost instantly available for historical big data analysis in the OLAP warehouse.
 
+###### Let's show the steps for this seamless integration of CosmosDB, Serverless SQL Pool, and Spark Pool in Azure Synapse, with the use of Synapse Link.
 
+Data from IOT Taxi Devices are imported into the Heartbeat container in Cosmos DB.
+Synapse Link is enabled in CosmosDB configuration, which will allow the transformation of OLTP row storage data to OLAP columnar without the need of ETL.
+<img width="1433" alt="insertItemsMongoDB" src="https://github.com/user-attachments/assets/2c6565fa-831d-4607-b313-255f6d6e0077">
 
-<img width="1438" alt="Screenshot at Sep 02 02-36-25" src="https://github.com/user-attachments/assets/59663c31-f001-448b-a000-1f053cfe6233">
+The data is now Linked inside Synapse, ready to be queried from our Serverless SQL Pool or Spark Pool.
+<img width="297" alt="LinkedDataSynapse" src="https://github.com/user-attachments/assets/4313662b-b3df-4697-88fd-d3c2759223cf">
+
+The data are seamlessly queried directly from CosmosDB, efficiently getting advantage of their columnar parquet format for faster queries and no need to further ETL steps.
 
 <img width="1438" alt="queryHeartbeatFromServerlessPool" src="https://github.com/user-attachments/assets/d8bba9f9-d64d-4cbc-912a-ce6a9765f0c1">
 
-<img width="297" alt="LinkedDataSynapse" src="https://github.com/user-attachments/assets/4313662b-b3df-4697-88fd-d3c2759223cf">
+In this Spark notebook, the data is read from the OLAP warehouse, and getting transformed into a PySpark Dataframe
 
-<img width="1433" alt="insertItemsMongoDB" src="https://github.com/user-attachments/assets/2c6565fa-831d-4607-b313-255f6d6e0077">
+<img width="1439" alt="image" src="https://github.com/user-attachments/assets/6b31076b-be8d-4fb0-a7e8-c11d4c794b63">
+
+This usecase shows how the data imported from IOT devices in Cosmos DB can be instantly transformed in a spark Dataframe and provide direct insights to the end-analysts.
+
+<img width="1439" alt="image" src="https://github.com/user-attachments/assets/3ca024c2-032b-4cfe-8dbd-77e4f3191b24">
+
+
+
+
+
 
 
