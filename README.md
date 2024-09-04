@@ -54,13 +54,13 @@ The data was transformed to different file types, and I worked with them in the 
 1. **Serverless SQL Pool:** The Serverless SQL Pool in Azure Synapse Analytics is a powerful feature that enables you to query large volumes of data without the need for provisioning or managing dedicated resources. It offers an on-demand, serverless approach to executing SQL queries against data stored in various formats within your Azure Data Lake Storage Gen2.
  
 #### Solution Architecture 
-<img width="1375" alt="image" src="https://github.com/user-attachments/assets/e099702e-fe84-40e2-84f9-5dd61a546692">
+<img width="1372" alt="image" src="https://github.com/user-attachments/assets/f03937ef-754a-4caf-8b41-fa59f3036c58">
 
 
 2. **Apache Spark Pool:** The Apache Spark Pool in Azure Synapse Analytics is a powerful computing resource designed for large-scale data processing and analytics. It provides a highly scalable and distributed processing engine, allowing users to execute Spark jobs on massive datasets. The Spark Pool leverages the Apache Spark framework, enabling users to perform complex data transformations, machine learning tasks, and advanced analytics. With seamless integration into Azure Synapse Analytics, it offers a unified environment for data ingestion, exploration, and visualization, empowering organizations to gain valuable insights from their data quickly and efficiently.
 
 #### Solution Architecture
-![Spark Pool](https://github.com/okaforoa/nyc-taxi-azure-data-engineering-project/blob/main/images/Spark%20Pool%20Solution%20Arch.png)
+<img width="1350" alt="image" src="https://github.com/user-attachments/assets/2bae5b95-3883-4937-986e-9cae29386720">
 
 3. **Synapse Link:** Synapse Link is a feature within Azure Synapse Analytics that enables seamless and real-time integration between the cloud-based analytical capabilities of Azure Synapse and operational data stored in Azure Cosmos DB. It eliminates the need for data movement or duplication, allowing organizations to directly query and analyze live data from Azure Cosmos DB using familiar SQL-based tools and techniques. Synapse Link provides a unified and efficient way to bridge the gap between analytical and operational systems, enabling organizations to gain valuable insights from their real-time data without compromising on performance or scalability.
 
