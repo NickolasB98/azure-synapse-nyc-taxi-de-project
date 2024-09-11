@@ -1,6 +1,6 @@
 IF (NOT EXISTS(SELECT * FROM sys.credentials WHERE name = 'synapse-course-cosmos-db-nikolas'))
-    CREATE CREDENTIAL [synapse-course-cosmos-db-nikolas]
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'tT0W6dtHAtYtvHDhMInW4WgI6EU0w20V25PPrdL0WgRo8K3qGFKFninboTKvPFX9k6I7ZuSxQ197ACDbCp0KZg=='
+    CREATE CREDENTIAL [synapse-course-cosmos-db-nikolas]    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = ''
+
 GO
 
 SELECT TOP 100 *
