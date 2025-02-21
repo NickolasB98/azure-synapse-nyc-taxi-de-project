@@ -41,6 +41,7 @@ This project provides key insights into NYC Green Taxi demand and payment trends
 5. **Geographic Payment Preferences:** Card payment adoption varies across boroughs.
 
 **The Dashboards were created in AWS Quicksight.**
+
 <img width="702" alt="image" src="https://github.com/user-attachments/assets/617d679d-6745-47e3-913a-321109bcc4bf" />
 
 ---
