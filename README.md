@@ -59,12 +59,12 @@ This project provides key insights into NYC Green Taxi demand and payment trends
 
 #### Main Insight 2: **Borough-Level Demand Disparities**
 - **Finding:** Manhattan is the dominant borough for taxi demand.
-- **Supporting Data:** Manhattan accounts for a significantly larger share of trips than other boroughs. Precise percentages are difficult to determine from the image.
+- **Supporting Data:** Manhattan accounts for a significantly larger share of trips than other boroughs. 
 - **Implication:** This disparity necessitates borough-specific service strategies.
 
 #### Main Insight 3: **Monthly Demand Trends**
 - **Finding:** A general decline in taxi demand is noticeable from January 2020 to July 2021.
-- **Supporting Data:** The chart shows a clear downward trend over the months shown. Specific trip counts are difficult to extract from the image.
+- **Supporting Data:** The chart shows a clear downward trend over the months shown.
 - **Implication:** Further investigation into the causes of this trend is warranted.
 
 ---
